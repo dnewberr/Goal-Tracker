@@ -13,9 +13,13 @@
 		CD6F03C92038D069008422B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6F03C72038D069008422B9 /* Main.storyboard */; };
 		CD6F03CB2038D069008422B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6F03CA2038D069008422B9 /* Assets.xcassets */; };
 		CD6F03CE2038D069008422B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6F03CC2038D069008422B9 /* LaunchScreen.storyboard */; };
+		CD6F03D62038D279008422B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD6F03D52038D279008422B9 /* GoogleService-Info.plist */; };
+		CFB81FD38F22C9650186882D /* Pods_Goal_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AC15354E1E3365E9BCF94D /* Pods_Goal_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49D246933473469A2A7A2214 /* Pods-Goal Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goal Tracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Goal Tracker/Pods-Goal Tracker.debug.xcconfig"; sourceTree = "<group>"; };
+		653C89479FB98FC8CED3840D /* Pods-Goal Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goal Tracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Goal Tracker/Pods-Goal Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		CD6F03BE2038D069008422B9 /* Goal Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goal Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6F03C12038D069008422B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD6F03C32038D069008422B9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		CD6F03CA2038D069008422B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD6F03CD2038D069008422B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD6F03CF2038D069008422B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6F03D52038D279008422B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F9AC15354E1E3365E9BCF94D /* Pods_Goal_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goal_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFB81FD38F22C9650186882D /* Pods_Goal_Tracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		782B22C50CAD2FEA3DBD6DD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49D246933473469A2A7A2214 /* Pods-Goal Tracker.debug.xcconfig */,
+				653C89479FB98FC8CED3840D /* Pods-Goal Tracker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		925835499855DDB1832BFB49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9AC15354E1E3365E9BCF94D /* Pods_Goal_Tracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CD6F03B52038D068008422B9 = {
 			isa = PBXGroup;
 			children = (
 				CD6F03C02038D069008422B9 /* Goal Tracker */,
 				CD6F03BF2038D069008422B9 /* Products */,
+				782B22C50CAD2FEA3DBD6DD3 /* Pods */,
+				925835499855DDB1832BFB49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +82,7 @@
 		CD6F03C02038D069008422B9 /* Goal Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				CD6F03D52038D279008422B9 /* GoogleService-Info.plist */,
 				CD6F03C12038D069008422B9 /* AppDelegate.swift */,
 				CD6F03C32038D069008422B9 /* FirstViewController.swift */,
 				CD6F03C52038D069008422B9 /* SecondViewController.swift */,
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD6F03D22038D069008422B9 /* Build configuration list for PBXNativeTarget "Goal Tracker" */;
 			buildPhases = (
+				951E1CF4954A7F931B1BD004 /* [CP] Check Pods Manifest.lock */,
 				CD6F03BA2038D069008422B9 /* Sources */,
 				CD6F03BB2038D069008422B9 /* Frameworks */,
 				CD6F03BC2038D069008422B9 /* Resources */,
+				883177F0D11213355BBF1813 /* [CP] Embed Pods Frameworks */,
+				AF11B3A379BB4EAFB96D96E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,12 +157,69 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6F03CE2038D069008422B9 /* LaunchScreen.storyboard in Resources */,
+				CD6F03D62038D279008422B9 /* GoogleService-Info.plist in Resources */,
 				CD6F03CB2038D069008422B9 /* Assets.xcassets in Resources */,
 				CD6F03C92038D069008422B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		883177F0D11213355BBF1813 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Goal Tracker/Pods-Goal Tracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Goal Tracker/Pods-Goal Tracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		951E1CF4954A7F931B1BD004 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Goal Tracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF11B3A379BB4EAFB96D96E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Goal Tracker/Pods-Goal Tracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD6F03BA2038D069008422B9 /* Sources */ = {
@@ -276,6 +363,7 @@
 		};
 		CD6F03D32038D069008422B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49D246933473469A2A7A2214 /* Pods-Goal Tracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +379,7 @@
 		};
 		CD6F03D42038D069008422B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 653C89479FB98FC8CED3840D /* Pods-Goal Tracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
