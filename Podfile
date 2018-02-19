@@ -6,6 +6,8 @@ target 'Goal Tracker' do
   use_frameworks!
 
   # Pods for Goal Tracker
-  pod 'Firebase'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
 
 end
