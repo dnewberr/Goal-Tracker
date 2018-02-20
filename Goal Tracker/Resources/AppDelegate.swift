@@ -6,6 +6,7 @@
 //  Copyright © 2018 Deborah Newberry. All rights reserved.
 //
 
+import IQKeyboardManagerSwift
 import Firebase
 import UIKit
 
@@ -17,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         FirebaseApp.configure()
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        IQKeyboardManager.sharedManager().enable = true
         return true
     }
 

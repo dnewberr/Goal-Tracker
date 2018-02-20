@@ -7,13 +7,27 @@
 //
 
 import Foundation
+import Firebase
 
 class Goal {
+    let id: String
     let expiration: Date
     let name: String
     
-    init(expiration: Date, name: String) {
-        self.expiration = expiration
-        self.name = name
+    init(snapshot: QueryDocumentSnapshot) {
+        self.id = snapshot.documentID
+        
+        let data = snapshot.data()
+        if let expirationDate = data["expirationDate"] as? Date {
+            self.expiration = expirationDate
+        } else {
+            self.expiration = Date()
+        }
+        
+        if let goalName = data["name"] as? String {
+            self.name = goalName
+        } else {
+            self.name = ""
+        }
     }
 }

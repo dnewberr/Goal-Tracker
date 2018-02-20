@@ -11,7 +11,7 @@ import UIKit
 
 public protocol ServiceDelegate: class {
     func failure(message: String)
-    func success()
+    func success(data: Any?)
 }
 
 class Utilities {
@@ -23,16 +23,30 @@ class Utilities {
         myAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         return myAlert
     }
+    
+    static func convertStringToDate(date: String) -> Date {
+        // TODO
+        return Date()
+    }
+}
+
+struct AuthFailure {
+    static let emailInUse = "email already in use."
+    static let generic = "something went wrong, please try again later."
+    static let signOut = "failed to sign out, please try again later."
+    static let wrongEmailPassword = "wrong email and password combination."
 }
 
 extension UIView {
+    func addBlackTopBorder() { addTopBorderWithColor(color: UIColor.black, width: 1) }
     func addTopBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: visualWidth(), height: width)
+        border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: width)
         self.layer.addSublayer(border)
     }
     
+    func addBlackRightBorder() { addRightBorderWithColor(color: UIColor.black, width: 1) }
     func addRightBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
@@ -40,6 +54,7 @@ extension UIView {
         self.layer.addSublayer(border)
     }
     
+    func addBlackBottomBorder() { addBottomBorderWithColor(color: UIColor.black, width: 1) }
     func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
@@ -47,6 +62,7 @@ extension UIView {
         self.layer.addSublayer(border)
     }
     
+    func addBlackLeftBorder() { addLeftBorderWithColor(color: UIColor.black, width: 1) }
     func addLeftBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor

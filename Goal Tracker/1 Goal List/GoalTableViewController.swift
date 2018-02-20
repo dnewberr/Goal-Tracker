@@ -11,71 +11,110 @@ import UIKit
 class GoalSummaryTableViewCell: UITableViewCell {
     @IBOutlet weak var goalName: UILabel!
     @IBOutlet weak var goalExpirationDate: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layoutMargins = UIEdgeInsets.zero
+    }
 }
 
-class GoalTableViewController: UITableViewController {
+class GoalTableViewController: UITableViewController, ServiceDelegate {
+    @IBOutlet weak var emptyStateLabel: UILabel!
+    @IBAction func unwindToTable(segue:UIStoryboardSegue) { }
     @IBAction func createGoal(_ sender: Any) {
         performSegue(withIdentifier: "createGoalSegue", sender: sender)
     }
     
-    @IBAction func unwindToTable(segue:UIStoryboardSegue) { }
+    var customView: UIView!
+    let goalService = GoalService()
+    var goals: [Goal] = []
+    var labelsArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.goalService.delegate = self
+        emptyStateLabel.center = self.view.center
+        emptyStateLabel.isHidden = !goals.isEmpty
+        
+        self.refreshControl?.addTarget(self, action: #selector(GoalTableViewController.refresh), for: .valueChanged)
+        self.refresh(sender: self)
+        
+        self.tableView.layoutMargins = UIEdgeInsets.zero
+        self.tableView.separatorInset = UIEdgeInsets.zero
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.refresh(sender: self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return goals.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "goalSummaryCell", for: indexPath) as? GoalSummaryTableViewCell {
+            let goal = goals[indexPath.row]
+            cell.goalName.text = goal.name
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            
+            cell.goalExpirationDate.text =  dateFormatter.string(from: goal.expiration)
+            return cell
+        }
+        return GoalSummaryTableViewCell()
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            var newGoals = goals
+            newGoals.remove(at: indexPath.row)
+            goalService.deleteGoal(id: goals[indexPath.row].id, newGoals: newGoals)
+            //            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+    
+    @objc func refresh(sender: AnyObject) {
+        self.goalService.fetchGoals()
+    }
+    
+    func loadCustomRefreshContents() {
+        let refreshContents = Bundle.main.loadNibNamed("RefreshView", owner: self, options: nil)!
+        customView = refreshContents[0] as! UIView
+        customView.frame = (refreshControl?.bounds)!
+    }
+    
+    func success(data: Any?) {
+        if let goalArray = data as? [Goal] {
+            self.goals = goalArray
+        }
+        
+        if let _ = self.refreshControl?.isRefreshing {
+            self.refreshControl?.endRefreshing()
+        }
+        
+        emptyStateLabel.isHidden = !goals.isEmpty
+        self.tableView.reloadData()
+    }
+    
+    func failure(message: String) {
+        self.present(Utilities.createAlert(message: message), animated: true, completion: nil)
+    }
 
     /*
     // Override to support rearranging the table view.

@@ -23,21 +23,7 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.addBorder(item: errorLabel)
-//        self.addBorder(item: mainView)
-//        self.addBorder(item: okayButton)
-        
-        
-        
-        
         self.messageLabel.text = message
-    }
-    
-    func addBorder(item: UIView) {
-        item.layer.borderColor = UIColor.black.cgColor
-        item.layer.borderWidth = 1
-        
-        
     }
     
     func message(message: String) {

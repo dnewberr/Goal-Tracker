@@ -22,28 +22,31 @@ class CreateGoalViewController: UIViewController, ServiceDelegate {
         let goalValue = getText(field: goalValueTextField, error: goalValueErrorLabel)
         
         if !goalName.isEmpty && !goalValue.isEmpty {
-            let goalExpirationDate = goalExpirationDatePicker.date
-            goalService.createNewGoal(name: goalName, expirationDate: goalExpirationDate, value: goalValue)
+            let expirationDate = goalExpirationDatePicker.date
+            let value = (goalValue as NSString).doubleValue
+            goalService.createNewGoal(name: goalName, expirationDate: expirationDate, value: value)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.goalService.delegate = self
-        setPickerDates()
-        clearErrors()
-    }
-
-    func setPickerDates() {
-        let now = Date()
-        self.goalExpirationDatePicker.minimumDate = now
-        self.goalExpirationDatePicker.date = Calendar.current.date(byAdding: .month, value: 1, to: now)!
+        self.clearErrors()
+        self.generateBorders()
+        self.setPickerDates()
     }
     
     func clearErrors() {
         self.goalNameErrorLabel.isHidden = true
         self.goalValueErrorLabel.isHidden = true
+    }
+    
+    func generateBorders() {
+        self.goalService.delegate = self
+        self.goalNameTextField.borderStyle = .none
+        self.goalNameTextField.addBlackBottomBorder()
+        self.goalValueTextField.borderStyle = .none
+        self.goalValueTextField.addBlackBottomBorder()
     }
     
     func getText(field: UITextField, error: UILabel) -> String {
@@ -54,18 +57,28 @@ class CreateGoalViewController: UIViewController, ServiceDelegate {
         error.isHidden = true
         return value
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    func setPickerDates() {
+        let now = Date()
+        self.goalExpirationDatePicker.minimumDate = now
+        self.goalExpirationDatePicker.date = Calendar.current.date(byAdding: .month, value: 1, to: now)!
     }
     
-    
-    /* Delegate Methods */
-    func success() {
+    // Delegate Methods
+    func success(data: Any?) {
         performSegue(withIdentifier: "unwindToTableSegue", sender: self)
     }
     
     func failure(message: String) {
         self.present(Utilities.createAlert(message: message), animated: true, completion: nil)
+    }
+    
+    // closes keyboard on outside touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

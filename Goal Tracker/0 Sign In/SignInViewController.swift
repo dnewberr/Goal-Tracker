@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController, ServiceDelegate {
     @IBOutlet weak var errorLabel: UILabel!
@@ -14,10 +15,11 @@ class SignInViewController: UIViewController, ServiceDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     
     let authService = AuthenticationService()
+    var handle: AuthStateDidChangeListenerHandle?
     
     @IBAction func signIn(_ sender: Any) {
         let email = getText(field: emailTextField, error: errorLabel)
-        let password = getText(field: emailTextField, error: errorLabel)
+        let password = getText(field: passwordTextField, error: errorLabel)
         
         if !email.isEmpty && !password.isEmpty {
             authService.signIn(email: email, password: password)
@@ -29,16 +31,18 @@ class SignInViewController: UIViewController, ServiceDelegate {
         self.authService.delegate = self
         self.generateBorders()
         errorLabel.isHidden = true
-        let keyboardDismissTap = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
-        view.addGestureRecognizer(keyboardDismissTap)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                self.performSegue(withIdentifier: "signInSegue", sender: self)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     func getText(field: UITextField, error: UILabel) -> String {
@@ -51,17 +55,26 @@ class SignInViewController: UIViewController, ServiceDelegate {
     }
     func generateBorders() {
         self.passwordTextField.borderStyle = .none
-        self.passwordTextField.addBottomBorderWithColor(color: UIColor.black, width: 1.0)
+        self.passwordTextField.addBlackBottomBorder()
         self.emailTextField.borderStyle = .none
-        self.emailTextField.addBottomBorderWithColor(color: UIColor.black, width: 1.0)
+        self.emailTextField.addBlackBottomBorder()
     }
     
     // Delegate methods
-    func success() {
-        performSegue(withIdentifier: "singInSegue", sender: self)
+    func success(data: Any?) {
+        performSegue(withIdentifier: "signInSegue", sender: self)
     }
     
     func failure(message: String) {
         self.present(Utilities.createAlert(message: message), animated: true, completion: nil)
+    }
+    
+    // closes keyboard on outside touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

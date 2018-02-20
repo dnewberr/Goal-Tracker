@@ -63,6 +63,7 @@ PODS:
     - gRPC-Core (= 1.9.1)
     - gRPC-RxLibrary (= 1.9.1)
   - GTMSessionFetcher/Core (1.1.13)
+  - IQKeyboardManagerSwift (5.0.7)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - IQKeyboardManagerSwift
 
 SPEC CHECKSUMS:
   BoringSSL: f3d6b8ce199b9c450a8cfc14895d07a2627fc232
@@ -90,10 +92,11 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: f29e8b7445e0d3c0311678ab121e6c164da4ca5e
   gRPC-RxLibrary: 8e0067bfe8a054022c7a81470baace4f2f633b48
   GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
+  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: 44af6def77d185b2663409aaa64f2006d7ecfda3
+PODFILE CHECKSUM: 75321b81d7a38ecf4d832c4201534368a6f78829
 
 COCOAPODS: 1.4.0
