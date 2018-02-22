@@ -25,7 +25,9 @@ class SignUpViewController: UIViewController {
         mainView.layer.borderWidth = 1
         mainView.layer.masksToBounds = false
         mainView.layer.borderColor = UIColor.black.cgColor
-        mainView.layer.cornerRadius = mainView.frame.height/2
+//        mainView.layer.cornerRadius = mainView.frame.height/2
+        mainView.layer.cornerRadius = 20
+
         mainView.clipsToBounds = true
     }
 

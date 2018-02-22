@@ -28,7 +28,7 @@ class SignInViewController: UIViewController, ServiceDelegate {
     
     @IBAction func singUp(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signUpView = storyboard.instantiateViewController(withIdentifier: "signUp") as! SignUpViewController
+        let signUpView = storyboard.instantiateViewController(withIdentifier: "signUp2") as! SignUpViewController
         signUpView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         signUpView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.present(signUpView, animated: true, completion: nil)
