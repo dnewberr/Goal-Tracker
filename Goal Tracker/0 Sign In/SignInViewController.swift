@@ -26,6 +26,14 @@ class SignInViewController: UIViewController, ServiceDelegate {
         }
     }
     
+    @IBAction func singUp(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signUpView = storyboard.instantiateViewController(withIdentifier: "signUp") as! SignUpViewController
+        signUpView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        signUpView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(signUpView, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.authService.delegate = self
@@ -53,6 +61,7 @@ class SignInViewController: UIViewController, ServiceDelegate {
         error.isHidden = true
         return value
     }
+    
     func generateBorders() {
         self.passwordTextField.borderStyle = .none
         self.passwordTextField.addBlackBottomBorder()

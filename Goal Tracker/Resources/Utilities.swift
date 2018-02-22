@@ -54,11 +54,12 @@ extension UIView {
         self.layer.addSublayer(border)
     }
     
-    func addBlackBottomBorder() { addBottomBorderWithColor(color: UIColor.black, width: 1) }
-    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+    func addBlackBottomBorder() { addBottomBorderWithColor(color: UIColor.black, width: 1, frameWidth: UIScreen.main.bounds.width) }
+
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat, frameWidth: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: visualWidth(), height: width)
+        border.frame = CGRect(x: -self.frame.minX, y: self.frame.size.height - width, width: frameWidth, height: width)
         self.layer.addSublayer(border)
     }
     

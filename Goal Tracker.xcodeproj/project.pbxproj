@@ -14,6 +14,8 @@
 		CD9F39F7203AB59F00C4FF21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD9F39F6203AB59F00C4FF21 /* GoogleService-Info.plist */; };
 		CD9F39F9203BCCAE00C4FF21 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F39F8203BCCAE00C4FF21 /* SettingsViewController.swift */; };
 		CD9F39FB203C007900C4FF21 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9F39FA203C007900C4FF21 /* RefreshView.xib */; };
+		CD9F39FE203E92D300C4FF21 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F39FD203E92D300C4FF21 /* SettingsTableViewController.swift */; };
+		CD9F3A00203E9AE100C4FF21 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9F39FF203E9AE100C4FF21 /* SignUpViewController.swift */; };
 		CDD970E82038D9AC00C951A5 /* GoalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD970E72038D9AC00C951A5 /* GoalTableViewController.swift */; };
 		CDD970EA2038DA6800C951A5 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD970E92038DA6800C951A5 /* Goal.swift */; };
 		CDD970F02038DD4400C951A5 /* GoalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD970EF2038DD4400C951A5 /* GoalService.swift */; };
@@ -37,6 +39,8 @@
 		CD9F39F6203AB59F00C4FF21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CD9F39F8203BCCAE00C4FF21 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD9F39FA203C007900C4FF21 /* RefreshView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
+		CD9F39FD203E92D300C4FF21 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		CD9F39FF203E9AE100C4FF21 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CDD970E72038D9AC00C951A5 /* GoalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTableViewController.swift; sourceTree = "<group>"; };
 		CDD970E92038DA6800C951A5 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		CDD970EF2038DD4400C951A5 /* GoalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalService.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		CD6F03C02038D069008422B9 /* Goal Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				CD9F39FC203E927400C4FF21 /* Settings */,
 				CD9F39F6203AB59F00C4FF21 /* GoogleService-Info.plist */,
 				CDD970FB203A9AEC00C951A5 /* 0 Sign In */,
 				CDD970FC203A9B5C00C951A5 /* 1 Goal List */,
@@ -106,9 +111,17 @@
 				CDD970E12038D4B100C951A5 /* Resources */,
 				CDD970DF2038D49900C951A5 /* Storyboard */,
 				CD6F03CF2038D069008422B9 /* Info.plist */,
-				CD9F39F8203BCCAE00C4FF21 /* SettingsViewController.swift */,
 			);
 			path = "Goal Tracker";
+			sourceTree = "<group>";
+		};
+		CD9F39FC203E927400C4FF21 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD9F39FD203E92D300C4FF21 /* SettingsTableViewController.swift */,
+				CD9F39F8203BCCAE00C4FF21 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		CDD970DF2038D49900C951A5 /* Storyboard */ = {
@@ -152,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				CDD970F7203A94FE00C951A5 /* SignInViewController.swift */,
+				CD9F39FF203E9AE100C4FF21 /* SignUpViewController.swift */,
 			);
 			path = "0 Sign In";
 			sourceTree = "<group>";
@@ -323,8 +337,10 @@
 				CDD970F2203A42E300C951A5 /* CreateGoalViewController.swift in Sources */,
 				CDD970F4203A5FFF00C951A5 /* AlertViewController.swift in Sources */,
 				CDD970F6203A8E7700C951A5 /* Utilities.swift in Sources */,
+				CD9F39FE203E92D300C4FF21 /* SettingsTableViewController.swift in Sources */,
 				CD9F39F9203BCCAE00C4FF21 /* SettingsViewController.swift in Sources */,
 				CDD970F02038DD4400C951A5 /* GoalService.swift in Sources */,
+				CD9F3A00203E9AE100C4FF21 /* SignUpViewController.swift in Sources */,
 				CDD970FA203A96BD00C951A5 /* AuthenticationService.swift in Sources */,
 				CDD970F8203A94FF00C951A5 /* SignInViewController.swift in Sources */,
 				CD6F03C22038D069008422B9 /* AppDelegate.swift in Sources */,
